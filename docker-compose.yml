@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+
+  php:
+    build: ./docker/php
+    restart: unless-stopped
+    container_name: docker-test.php    
+    tty: true
+    expose:
+      - ${LOCAL_PHP_EXPOSE}
+    # depends_on:
+      # - db
+    volumes:
+      - .:/var/www
+
+  apache:
+    build: ./docker/apache
+    restart: unless-stopped
+    container_name: docker-test.apache
+    tty: true
+    depends_on:
+      - php
+    ports:
+      - ${LOCAL_APACHE_HTTP}:80      
+    environment:
+      - VIRTUAL_HOST=${LOCAL_WWWROOT}
+    volumes:
+      - ./app:/var/www/app  
+

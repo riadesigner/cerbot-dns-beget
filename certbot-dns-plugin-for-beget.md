@@ -1,4 +1,4 @@
-# Certbot DNS Plugin for Beget
+# Certbot DNS Plugin for Beget (MANUAL INSTALLIATION)
 
 This is a custom Certbot plugin that allows you to use the Beget DNS API for automatic wildcard certificate issuance and renewal.
 
